@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ContactCreatedEvent;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -14,6 +15,13 @@ class ContactController extends Controller
     public function index(): View
     {
         return view('contact.index');
+    }
+
+    public function re()
+    {
+        dd('OK Redirection');
+        // return redirect()->action(
+        //     [ContactController::class, 'index']);
     }
 
     /**
@@ -29,7 +37,24 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            // 'phone' => 'required|digits:10|numeric',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+  
+        $contact = Contact::create($request->all());
+  
+        event(new ContactCreatedEvent($contact));
+        
+        // return redirect()->action(
+        //     [ContactController::class, 'index']);
+        return redirect()->back()
+                         ->with(['success' => 'Merci de nous contacter.']);
+
+        // return redirect()->route('home');
     }
 
     /**

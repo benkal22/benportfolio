@@ -97,10 +97,17 @@ return [
     |
     */
 
+    // 'from' => [
+    //     'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+    //     'name' => env('MAIL_FROM_NAME', 'Example'),
+    // ],
+
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'benkal@benkalsoft.com'),
+        'name' => env('MAIL_FROM_NAME', 'Ben Kal 1'),
     ],
+
+    'reply_to' => ['address' => 'benkal@benkalsoft.com', 'name' => 'Ben Kal Reply'],
 
     /*
     |--------------------------------------------------------------------------

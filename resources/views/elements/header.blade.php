@@ -1,4 +1,37 @@
-<!-- Navigation-->
+{{ $active_cur = isset($active) ? $active : ""}}
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+
+      <h1 class="logo me-auto me-lg-0"><a href="index.html">Ben Kaluseyiko</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li {{ $title=="Accueil" ? "id=current_page" : "Portfolio"}}><a class="{{ $active_cur }}" href="/">Accueil</a></li>
+          <li><a class="{{ $active_cur }}" href="apropos">A propos</a></li>
+          <li><a class="{{ $active_cur }}" href="parcours">Parcours</a></li>
+          <li><a class="{{ $active_cur }}" href="services">Services</a></li>
+          <li><a class="{{ $active_cur }}" href="portfolio">Portfolio</a></li>
+          <li><a class="{{ $active_cur }}" href="contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+
+    </div>
+
+  </header><!-- End Header -->
+
+{{-- <!-- Navigation-->
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="/">Ben Kaluseyiko</a>
@@ -35,13 +68,13 @@
                 <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
             </ul>
 
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="me-1"></i>
-                    Projets
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">15</span>
+                <button class="btn btn-outline-dark" href="portfolio">
+                    <a href="portfolio">
+                        <i class="me-1"></i>
+                        Projets
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">15</span>
+                    </a>
                 </button>
-            </form>
         </div>
     </div>
-</nav>
+</nav> --}}

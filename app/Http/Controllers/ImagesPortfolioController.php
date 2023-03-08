@@ -2,23 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Portfolio;
+use App\Models\Images_Portfolio;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 
-class PortfolioController extends Controller
+class ImagesPortfolioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
-        $portfolios = Portfolio::all();
-        $portfolio_categories = DB::table('portfolios')
-        ->select('category')
-        ->get();
-        return view('portfolio.index', compact('portfolios', 'portfolio_categories'));
+        
     }
 
     /**
@@ -40,7 +34,7 @@ class PortfolioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Portfolio $portfolio)
+    public function show(Images_Portfolio $images_Portfolio)
     {
         //
     }
@@ -48,7 +42,7 @@ class PortfolioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Portfolio $portfolio)
+    public function edit(Images_Portfolio $images_Portfolio)
     {
         //
     }
@@ -56,7 +50,7 @@ class PortfolioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Portfolio $portfolio)
+    public function update(Request $request, Images_Portfolio $images_Portfolio)
     {
         //
     }
@@ -64,7 +58,7 @@ class PortfolioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Portfolio $portfolio)
+    public function destroy(Images_Portfolio $images_Portfolio)
     {
         //
     }

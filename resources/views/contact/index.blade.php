@@ -1,3 +1,5 @@
+{{ $title = "Contact" }}
+
 @extends('master')
 @section("content")
 
@@ -43,8 +45,13 @@
         </div>
 
         <div class="col-lg-8 mt-5 mt-lg-0">
-
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          @if(Session::has('success'))
+            <div class="alert alert-success">
+              {{Session::get('success')}}
+            </div>
+          @endif
+          <form action="{{ route('contact.store') }}" method="post" role="form">
+            {{ csrf_field() }}
             <div class="row">
               <div class="col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Votre nom" required>
@@ -60,11 +67,14 @@
               <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
             </div>
             <div class="my-3">
-              <div class="loading">Chargement</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Votre message a été envoyé. Merci !</div>
+              {{-- <div class="loading">Chargement</div>
+              <div class="error-message">Message non envoyé. Renvoyez votre message svp !</div>
+              <div class="sent-message">Votre message a été envoyé. Merci !</div> --}}
             </div>
-            <div class="text-center"><button type="submit">Envoyer message</button></div>
+            {{-- <div class="text-center"><button type="submit">Envoyer message</button></div> --}}
+            <button class="text-center btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" type="submit">
+              Envoyer message
+            </button>
           </form>
 
         </div>

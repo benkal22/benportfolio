@@ -1,8 +1,8 @@
+{{ $title = "A propos" }}
+{{ $active = "active" }}
+
 @extends('master')
 @section("content")
-
-<main id="main">
-
   <!-- ======= About Section ======= -->
   <section id="about" class="about">
     <div class="container" data-aos="fade-up">
@@ -141,13 +141,10 @@
             </div>
           </div><!-- End testimonial item -->
           @endforeach
-
         </div>
         <div class="swiper-pagination"></div>
       </div>
-
     </div>
   </section><!-- End Testimonials Section -->
 
-</main><!-- End #main -->
 @endsection 

@@ -4,17 +4,37 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class ServiceController extends Controller
 {
+    public $services_href = "#";
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        return view('services.index');
+        // dd($_GET);  
+        $services = Service::all();
+
+        return view('services.index', compact('services'));
     }
+
+    public function service(Request $request, string $id)
+    {
+        // dd($request->id);
+        $service_id = $request->id;
+        $service = Service::find($service_id);
+        return view('services.service', compact('service_id', 'service'));
+    }
+
+    // public function indexServices(): View
+    // {
+    //     $services = Service::all();
+
+    //     return view('parcours.index', compact('services'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +57,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        
     }
 
     /**

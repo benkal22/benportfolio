@@ -5,45 +5,42 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
 class ContactMail extends Mailable
 {
     use Queueable, SerializesModels;
-    
-    public $name, $email, $subject, $message;
+    public $data;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($name, $email, $subject, $message)
+    public function __construct($data)
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->subject = $subject;
-        $this->message = $message;
+        $this->data = $data;
     }
 
     public function index()
     {
-        return view('mails.index');
+        Mail::to($this->data->email)->send(new ContactMail($this->data->subject));
+        return view('accueil.index');
     }
-
-    public function build()
-    {
-        // On retourne le sujet et la  vue
-        return $this->email('Contact depuis mon site')->view('mails.index');
-    }
-
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Mail',
+            from: new Address($this->data->email, $this->data->name),
+            replyTo: [
+                new Address('benkal@benkalsoft.com', 'Ben Kal Reply'),
+            ],
+            subject: $this->data->subject,
         );
     }
 
@@ -53,7 +50,7 @@ class ContactMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mails.test',
         );
     }
 

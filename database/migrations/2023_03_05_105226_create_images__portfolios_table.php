@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('images_portfolios', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('resume');
-            $table->string('icon');
-            $table->string('href');
-            $table->string('image_hero');
-            $table->string('detail');
+            $table->string('image');
+            $table->foreignId('portfolio_details_id')->constrained('portfoliodetails');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('images_portfolios');
     }
 };

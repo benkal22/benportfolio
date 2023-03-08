@@ -1,3 +1,5 @@
+{{ $title = "Parcours" }}
+
 @extends('master')
 @section("content")
 

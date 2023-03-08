@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Education;
 use App\Models\Experience;
+use App\Models\Images_Portfolio;
 use App\Models\Profil;
 use Illuminate\Database\Seeder;
 
@@ -30,6 +31,10 @@ class DatabaseSeeder extends Seeder
             ProfilSeeder::class,
             EducationSeeder::class,
             ExperienceSeeder::class,
+            PortfolioSeeder::class,
+            PortfolioDetailsSeeder::class,
+            ImagesPortfolioSeeder::class,
+            ServiceSeeder::class,
         ]);
     }
 }
